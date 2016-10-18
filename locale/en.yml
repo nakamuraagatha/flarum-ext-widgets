@@ -1,0 +1,6 @@
+davis-widgets:
+  admin:
+  forum:
+    widgets:
+      popular-discussions:
+        title: Popular Discussions

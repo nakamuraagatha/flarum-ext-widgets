@@ -1,0 +1,35 @@
+{
+    "name": "davis/flarum-ext-widgets",
+    "description": "Add Widgets to Discussion Page",
+    "keywords": ["modifications", "flarum", "davis", "widget"],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Connor Davis",
+            "email": "davis@produes.co"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/dav-is/flarum-ext-widgets/issues",
+        "source": "https://github.com/dav-is/flarum-ext-widgets"
+    },
+    "require": {
+        "flarum/core": "^0.1.0-beta.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Davis\\Widgets\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Widgets",
+            "icon": {
+                "name": "cog",
+                "backgroundColor": "#FFFFFF",
+                "color": "#E7672E"
+            }
+        }
+    }
+}
