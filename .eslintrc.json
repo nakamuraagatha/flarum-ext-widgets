@@ -28,6 +28,6 @@
     },
     "globals": {
         "app": false,
--       "m": false
+        "m": false
     }
   }
