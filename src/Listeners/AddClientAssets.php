@@ -1,4 +1,15 @@
-<?php namespace Davis\Widgets\Listeners;
+<?php
+
+/*
+ * This file is part of davis/flarum-ext-widgets
+ *
+ * © Connor Davis <davis@produes.co>
+ *
+ * For the full copyright and license information, please view the MIT license
+ *
+ */
+
+namespace Davis\Widgets\Listeners;
 
 use DirectoryIterator;
 use Flarum\Event\ConfigureClientView;
@@ -17,16 +28,16 @@ class AddClientAssets
     {
         if ($event->isForum()) {
             $event->addAssets([
-                __DIR__ . '/../../js/forum/dist/extension.js',
-                __DIR__ . '/../../less/forum/extension.less',
+                __DIR__.'/../../js/forum/dist/extension.js',
+                __DIR__.'/../../less/forum/extension.less',
             ]);
             $event->addBootstrapper('davis/widgets/main');
         }
 
         if ($event->isAdmin()) {
             $event->addAssets([
-                __DIR__ . '/../../js/admin/dist/extension.js',
-                __DIR__ . '/../../less/admin/extension.less',
+                __DIR__.'/../../js/admin/dist/extension.js',
+                __DIR__.'/../../less/admin/extension.less',
             ]);
             $event->addBootstrapper('davis/widgets/main');
         }
@@ -34,9 +45,9 @@ class AddClientAssets
 
     public function addLocales(ConfigureLocales $event)
     {
-        foreach (new DirectoryIterator(__DIR__ . '/../../locale') as $file) {
+        foreach (new DirectoryIterator(__DIR__.'/../../locale') as $file) {
             if ($file->isFile() && in_array($file->getExtension(), ['yml', 'yaml'])) {
-                $event->locales->addTranslations($file->getBasename('.' . $file->getExtension()), $file->getPathname());
+                $event->locales->addTranslations($file->getBasename('.'.$file->getExtension()), $file->getPathname());
             }
         }
     }
