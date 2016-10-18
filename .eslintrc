@@ -26,8 +26,8 @@
       "jquery": true,
       "browser": true
     },
-    "globals": [
-        "app",
-        "m"
-    ]
+    "globals": {
+        "app": false,
+-       "m": false
+    }
   }
