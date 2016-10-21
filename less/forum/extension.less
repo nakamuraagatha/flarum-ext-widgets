@@ -21,54 +21,77 @@
 					margin-bottom: 5px;
 					border-top: 1px solid #ededed;
 
-					& a {
-				      padding: 8px 0 8px 30px;
-          			  color: @muted-color;
-				      display: block;
-				      width: 100%;
-				      border-radius: 0;
-				      border: 0;
-				      background: none;
-				      white-space: nowrap;
-				      overflow: hidden;
-				      text-overflow: ellipsis;
-				      .box-shadow(none);
-				      text-align: left;
-				      font-size: 13px;
-				      font-weight: normal;
-				      text-decoration: none;
+					& .Widget--list > ul {
+					    top: 100%;
+					    left: 0;
+					    z-index: 1030;
+					    border-radius: 4px;
+					    list-style: none;
+					    text-align: left;
+					    color: #111;
+					    font-size: 13px;
+					    line-height: 1.5;
+						display: block;
+					    border: 0;
+					    width: auto;
+					    margin: 0;
+					    padding: 0;
+					    min-width: 0;
+					    float: none;
+					    position: static;
+					    background: none;
+					    -webkit-box-shadow: none;
+					    box-shadow: none;
+					
+						& a {
+					      padding: 8px 0 8px 30px;
+	          			  color: @muted-color;
+					      display: block;
+					      width: 100%;
+					      border-radius: 0;
+					      border: 0;
+					      background: none;
+					      white-space: nowrap;
+					      overflow: hidden;
+					      text-overflow: ellipsis;
+					      .box-shadow(none);
+					      text-align: left;
+					      font-size: 13px;
+					      font-weight: normal;
+					      text-decoration: none;
 
-				      & span {
-				      	font-size: 13px;
-    					font-weight: normal;
-				      }
+					      & span {
+					      	font-size: 13px;
+	    					font-weight: normal;
+					      }
 
-				      &.hasIcon {
-				        padding-left: 40px;
-				      }
+					      &.hasIcon {
+					        padding-left: 40px;
+					      }
 
-				      .Button-icon {
-				        float: left;
-			            margin-left: -30px;
-			            margin-top: 1px;
-			            font-size: 15px;
-				      }
+					      .Button-icon {
+					        float: left;
+				            margin-left: -30px;
+				            margin-top: 1px;
+				            font-size: 15px;
+					      }
 
-				      &.disabled {
-				        opacity: 0.4;
-				        background: none !important;
-				      }
-				    }
-				    & a {
-				      &:hover {
-				        background: none;
-			            color: @link-color;
-			            text-decoration: none;
-				      }
-				      &:focus {
-				        outline: none;
-				      }
-				    }
+					      &.disabled {
+					        opacity: 0.4;
+					        background: none !important;
+					      }
+					    }
+					    & a {
+					      &:hover {
+					        background: none;
+				            color: @link-color;
+				            text-decoration: none;
+					      }
+					      &:focus {
+					        outline: none;
+					      }
+					    }
+					}
 				}
 			}
 		}

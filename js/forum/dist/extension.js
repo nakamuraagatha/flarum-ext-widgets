@@ -60,20 +60,26 @@ System.register('davis/widgets/addIndexPageWidgets', ['flarum/components/IndexPa
     }, function (_davisWidgetsWidgets) {
       Widgets = _davisWidgetsWidgets.default;
     }],
-    execute: function () {
-      ;
-    }
+    execute: function () {}
   };
 });;
 'use strict';
 
-System.register('davis/widgets/components/PopularDiscussionsWidget', ['davis/widgets/components/Widget'], function (_export, _context) {
+System.register('davis/widgets/components/PopularDiscussionsWidget', ['davis/widgets/components/Widget', 'flarum/utils/ItemList', 'flarum/helpers/listItems', 'flarum/components/LinkButton', 'flarum/components/LoadingIndicator'], function (_export, _context) {
   "use strict";
 
-  var Widget, PopularDiscussionsWidget;
+  var Widget, ItemList, listItems, LinkButton, LoadingIndicator, PopularDiscussionsWidget;
   return {
     setters: [function (_davisWidgetsComponentsWidget) {
       Widget = _davisWidgetsComponentsWidget.default;
+    }, function (_flarumUtilsItemList) {
+      ItemList = _flarumUtilsItemList.default;
+    }, function (_flarumHelpersListItems) {
+      listItems = _flarumHelpersListItems.default;
+    }, function (_flarumComponentsLinkButton) {
+      LinkButton = _flarumComponentsLinkButton.default;
+    }, function (_flarumComponentsLoadingIndicator) {
+      LoadingIndicator = _flarumComponentsLoadingIndicator.default;
     }],
     execute: function () {
       PopularDiscussionsWidget = function (_Widget) {
@@ -85,9 +91,48 @@ System.register('davis/widgets/components/PopularDiscussionsWidget', ['davis/wid
         }
 
         babelHelpers.createClass(PopularDiscussionsWidget, [{
+          key: 'init',
+          value: function init() {
+            babelHelpers.get(PopularDiscussionsWidget.prototype.__proto__ || Object.getPrototypeOf(PopularDiscussionsWidget.prototype), 'init', this).call(this);
+
+            this.data = null;
+            this.getData();
+          }
+        }, {
           key: 'content',
           value: function content() {
-            return 'Work in progress';
+            return m(
+              'div',
+              { className: 'Widget--list Widget-PopularDiscussions--list' },
+              this.data ? m(
+                'ul',
+                null,
+                listItems(this.data.toArray())
+              ) : LoadingIndicator.component({ size: 'tiny' })
+            );
+          }
+        }, {
+          key: 'getData',
+          value: function getData() {
+            var _this2 = this;
+
+            app.store.find('discussions', {
+              page: { limit: 5 },
+              sort: '-commentsCount'
+            }).then(function (results) {
+              var data = new ItemList();
+
+              results.forEach(function (result, index) {
+                data.add('popular-discussions-' + index, LinkButton.component({
+                  icon: 'comments',
+                  children: result.data.attributes.title,
+                  href: app.route.discussion(result)
+                }));
+              });
+
+              _this2.data = data;
+              m.redraw();
+            });
           }
         }, {
           key: 'title',
